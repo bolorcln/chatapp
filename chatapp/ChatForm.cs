@@ -15,6 +15,7 @@ namespace chatapp
     {
         private string myUserName = null;
         private Network network;
+        private Broadcast broadcast;
         private Thread checkMessage;
         private delegate void AddMessage(Message msg);
         private User otherUser;
@@ -71,6 +72,7 @@ namespace chatapp
         }
         #endregion
 
+
         #region Events
         /* ChatForm цонх анх ачааллах үед дуудагдах функц
          */
@@ -92,6 +94,7 @@ namespace chatapp
                     this.Show();
                 }
             }
+            broadcast = new Broadcast(myUserName);
         }
 
         // Send Button дээр дарах үед бичсэн текстийг дэлгэцэнд хэвлэн харуулаад сүлжээгээр дамжуулна.
@@ -104,10 +107,24 @@ namespace chatapp
             network.SendMessage(otherUser.ipString, text);
         }
 
+        /* Connect button дарахад 
+         *  - Дэлгэцийг цэвэрлэнэ.
+         *  - TextBox-д бичсэн username-ээр broadcast хийнэ.
+         *  - Хэсэг хугацаа өнгөрсний дараа нөгөө талын хэрэглэгчтэй холбогдсон эсэхийг шалгана.
+         */
         private void connectButton_Click(object sender, EventArgs e)
         {
-            string ipString = ipAddrTextBox.Text;
-            otherUser = new User("other", ipString);
+            mainRichTextBox.Text = "";
+            string userName = otherUserTextBox.Text;
+            broadcast.clearUser();
+            broadcast.send(userName);
+            Thread.Sleep(1000);
+            otherUser = broadcast.getOtherUser();
+            if (otherUser == null)
+            {
+                MessageBox.Show("Didn't connect to other user");
+                return;
+            }
         }
         #endregion
 

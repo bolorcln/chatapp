@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ipAddrTextBox = new System.Windows.Forms.TextBox();
+            this.otherUserTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.connectButton = new System.Windows.Forms.Button();
             this.mainRichTextBox = new System.Windows.Forms.RichTextBox();
@@ -36,12 +36,12 @@
             this.sendButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // ipAddrTextBox
+            // otherUserTextBox
             // 
-            this.ipAddrTextBox.Location = new System.Drawing.Point(75, 16);
-            this.ipAddrTextBox.Name = "ipAddrTextBox";
-            this.ipAddrTextBox.Size = new System.Drawing.Size(237, 20);
-            this.ipAddrTextBox.TabIndex = 0;
+            this.otherUserTextBox.Location = new System.Drawing.Point(75, 16);
+            this.otherUserTextBox.Name = "otherUserTextBox";
+            this.otherUserTextBox.Size = new System.Drawing.Size(237, 20);
+            this.otherUserTextBox.TabIndex = 0;
             // 
             // label1
             // 
@@ -98,7 +98,7 @@
             this.Controls.Add(this.mainRichTextBox);
             this.Controls.Add(this.connectButton);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.ipAddrTextBox);
+            this.Controls.Add(this.otherUserTextBox);
             this.Name = "chatForm";
             this.Text = "Chat App";
             this.Load += new System.EventHandler(this.chatForm_Load);
@@ -109,7 +109,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox ipAddrTextBox;
+        private System.Windows.Forms.TextBox otherUserTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button connectButton;
         private System.Windows.Forms.RichTextBox mainRichTextBox;

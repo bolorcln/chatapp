@@ -16,5 +16,10 @@ namespace chatapp
             this.name = name;
             this.ipString = ipString;
         }
+
+        public static User CreateNewUser(string[] info)
+        {
+            return new User(info[0], info[1]);
+        }
     }
 }
